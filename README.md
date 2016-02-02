@@ -5,4 +5,10 @@ Errors during transcription may play an important role in determining cellular p
 
 Lucas B. Carey. eLife 2015. 
 
+-------------------
+
+mpileupCountMismatches.pl takes as input the output of samtools mpileup, and produces a tab file with the number of errors and number of ref reads at each position in the genome. The overall error rate is the sum of the last column divided by the sum of the second to last column. 
+
+The Makefile provides an example Makefile to download sequencing reads from NCBI, run bwa, and run MORPhEUS
+
 

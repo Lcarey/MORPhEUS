@@ -25,12 +25,10 @@ my %RefBaseCounts ;
 my $max_mismatches_per_position = 100 ; 
 my $max_percent_mismatches_per_position = 10 ; 
 my $print_base_comp_flag = 1 ;
-my $bedgraph_output_file = '';
 my $mpileup_gzipped_file = '';
 GetOptions(
 	"region_file=s" => \$region_file,
 	"mpileup_gzipped_file=s" => \$mpileup_gzipped_file,
-	"bedgraph_output_file=s" => \$bedgraph_output_file,
 	"print_base_comp" => \$print_base_comp_flag,
 	"max_mismatches_per_position=i" => \$max_mismatches_per_position,
 	"max_percent_mismatches_per_position=i" => \$max_percent_mismatches_per_position,
@@ -63,11 +61,6 @@ $RefBaseCounts{'A'}=0; $RefBaseCounts{'C'}=0;$RefBaseCounts{'G'}=0;$RefBaseCount
 
 my $nref = 0;
 my $nerr = 0;
-#if($bedgraph_output_file){
-#	print STDERR "Creating $bedgraph_output_file\n";
-#	open(BGOFE,">$bedgraph_output_file.errors.bedgraph");
-#	open(BGOFR,">$bedgraph_output_file.reads.bedgraph");
-#}
 while(<IN>){
 	chomp;
 	my @l = split(/\t/);
@@ -77,7 +70,7 @@ while(<IN>){
 		$RB{$ref_base}++;
 		$RC{$ref_base}+= $nreads;
 		next if ($nreads == 0);
-		next if ($l[4] =~ m/s[\+-]/); # no indels
+		next if ($l[4] =~ m/[\+-]\d/); # no indels
 		my $nref_fwd = () = $l[4] =~ /[\.]/gi;
 	my $nref_rev = () = $l[4] =~ /[,]/gi;
 	next unless( ($nref_fwd + $nref_rev) > 0 ) ;

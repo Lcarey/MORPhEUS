@@ -1,0 +1,9 @@
+{
+	"n_targets": 5917,
+	"n_bootstraps": 0,
+	"n_processed": 18595757,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Thu Nov 24 14:38:32 2016",
+	"call": "/homes/users/lcarey/single_cell_behavior/bin/kallisto quant --index=/gpfs/projects/lab_lcarey/single_cell_behavior/Data/Yeast/orf_coding.kidx --single --fragment-length=250 --sd=15 --output-dir=6_9283.kout 6_9283_GGCTAC.fastq.gz"
+}
